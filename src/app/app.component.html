@@ -1,0 +1,35 @@
+<h3 class= "mb-3  ml-5 pl-3">Trades</h3>
+<div class="container">
+    <button class="btn btn-sm btn-success mb-3" (click)="getResponse()">Validate data</button>
+    <div class="row">
+        <ul class="list-group list-group-flush col-12" *ngFor="let item of initialData; let i = index">
+            <li class="list-group-item section row">
+                <span class="font-weight-bolder">{{i + 1}}.</span>
+                <ul class="list-group list-group-flush" *ngFor="let key of iterableDataKeys[i]; let k = index">
+                            <li class="list-group-item p-0 m-0 pl-3 valid" [class.notValid] = "isValid(i, key)">
+                        <small>
+                            <span class="font-weight-bolder">{{key}}:</span>&nbsp;&nbsp;{{item[key]}} 
+                        </small>
+                    </li>
+                </ul>
+                <ng-container *ngIf= "isRequest">
+                    <ng-container *ngIf="errors[i].length != 0; else valid ">
+                        <p class="text-danger  m1-2 mb-0"><small><span class="font-weight-bolder">The Trade is invalid. The
+                                    following errors were detected:</span></small></p>
+                        <ul *ngFor="let err of errors[i]" class="list-group list-group-flush m-0">
+                            <li class="list-group-item mt-0 ml-5 p-0 font-italic">
+                                <small>{{err}}</small>
+                            </li>
+                        </ul>
+                    </ng-container>
+                    <ng-template #valid>
+                        <p class="text-success m1-2"><small><span class="font-weight-bolder">The Trade is valid. No
+                                    errors were detected.</span></small></p>
+                    </ng-template>
+                </ng-container>
+            </li>
+        </ul>
+
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+li.valid{
+    border-top: none;
+    border-bottom: 1px dashed gainsboro;
+    border-left: 5px solid white;
+  
+}
+li.section{
+    border-bottom: 5px solid gainsboro;
+}
+
+li.notValid{
+    border-left: 5px solid rgba(247, 123, 123, 0.993);
+    
+}
